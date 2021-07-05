@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 // MARK: - DetailModel
 struct DetailModel: Codable {
@@ -14,7 +15,7 @@ struct DetailModel: Codable {
     
     // MARK: - Result
     struct Result: Codable {
-        let screenshotUrls: [String]
+        let screenshotUrls: [String]  //
         let ipadScreenshotUrls, appletvScreenshotUrls: [String?]
         let artworkUrl512: String
         let artistViewURL: String
@@ -24,7 +25,7 @@ struct DetailModel: Codable {
         let advisories, features: [String?]
         let kind, minimumOSVersion: String
         let languageCodesISO2A: [String]
-        let fileSizeBytes, formattedPrice: String
+        let fileSizeBytes, formattedPrice: String //
         let averageUserRatingForCurrentVersion: Double
         let userRatingCountForCurrentVersion: Int
         let trackContentRating, trackCensoredName: String
@@ -37,14 +38,14 @@ struct DetailModel: Codable {
         let trackName, sellerName, primaryGenreName: String
         let isVppDeviceBasedLicensingEnabled: Bool
         let currentVersionReleaseDate: String
-        let releaseNotes: String
+        let releaseNotes: String //
         let primaryGenreID: Int
-        let currency, resultDescription: String
+        let currency, resultDescription: String //
         let artistID: Int
         let artistName: String
-        let genres: [String]
+        let genres: [String] //
         let price: Int
-        let bundleID, version, wrapperType: String
+        let bundleID, version, wrapperType: String //
         let userRatingCount: Int
 
         enum CodingKeys: String, CodingKey {
@@ -68,5 +69,66 @@ struct DetailModel: Codable {
             case version, wrapperType, userRatingCount
         }
     }
+    
+    var screenshotUrls: [String] {
+        self.results.first?.screenshotUrls ?? []
+    }
+    
+    var fileSizeBytes: String {
+        self.results.first?.fileSizeBytes ?? ""
+    }
+    
+    var version: String {
+        self.results.first?.version ?? ""
+    }
+    
+    var releaseNotes: String {
+        self.results.first?.releaseNotes ?? ""
+    }
+    
+    var description: String {
+        self.results.first?.resultDescription ?? ""
+    }
+    
+    var genres: [String] {
+        self.results.first?.genres ?? []
+    }
+}
 
+enum AppStoreSectionType: Equatable {
+    case detailScreenShot
+    case detailDesignatedInfo
+    case detailDescription
+    case detailCategory
+}
+
+struct AppStoreBaseItemSection: IdentifiableType {
+    typealias Identity = Int
+    var identity: Int {
+        return 0
+    }
+    var items: [AppStoreBaseItem]
+}
+extension AppStoreBaseItemSection: SectionModelType {
+    typealias Item = AppStoreBaseItem
+    
+    init(original: AppStoreBaseItemSection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+    
+    static func == (lhs: AppStoreBaseItemSection, rhs: AppStoreBaseItemSection) -> Bool {
+        return false
+    }
+}
+
+struct AppStoreBaseItem {
+    
+    let type: AppStoreSectionType
+    let model: DetailModel
+    
+    init(type: AppStoreSectionType, model: DetailModel) {
+        self.type = type
+        self.model = model
+    }
 }

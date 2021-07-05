@@ -16,10 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        
         self.window = window
         window.makeKeyAndVisible()
         
+        if let rootViewController = self.rootViewController() {
+            rootViewController.viewModel = ViewModel(dependency: ViewModel.Dependency(apiManager: AppDependency.apiManager))
+        }
+        
         return true
+    }
+    
+    private func rootViewController() -> ViewController? {
+        let navigationController = self.window?.rootViewController as? UINavigationController
+        return navigationController?.viewControllers.first as? ViewController
     }
 
     // MARK: UISceneSession Lifecycle

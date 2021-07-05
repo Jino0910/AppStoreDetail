@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum AppStoreAPI {
-    case lookup(Int64)
+    case lookup(Int)
 }
 
 extension AppStoreAPI {

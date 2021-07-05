@@ -10,6 +10,8 @@ target 'AppStoreDetail' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'SwiftDate'
+  pod 'RxDataSources'
+  pod 'RxGesture'
 
   # Pods for AppStoreDetail
 
