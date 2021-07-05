@@ -9,6 +9,7 @@ target 'AppStoreDetail' do
   pod 'RxCocoa'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'SwiftDate'
 
   # Pods for AppStoreDetail
 

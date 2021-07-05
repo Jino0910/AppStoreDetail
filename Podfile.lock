@@ -7,12 +7,14 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SwiftDate (6.3.1)
 
 DEPENDENCIES:
   - Alamofire
   - Kingfisher
   - RxCocoa
   - RxSwift
+  - SwiftDate
 
 SPEC REPOS:
   trunk:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftDate
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
 
-PODFILE CHECKSUM: 85386b6821fb48eda7a83827c44e43450531819c
+PODFILE CHECKSUM: 67e988bf22bf1ddda4839e91d460cc670bfba40a
 
 COCOAPODS: 1.10.1
