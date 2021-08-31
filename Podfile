@@ -14,5 +14,6 @@ target 'AppStoreDetail' do
   pod 'RxGesture'
 
   # Pods for AppStoreDetail
+  
 
 end
